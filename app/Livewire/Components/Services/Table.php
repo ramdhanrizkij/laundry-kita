@@ -20,6 +20,15 @@ class Table extends Component
         $this->resetPage();
         session()->flash('success',$message);
     }
+
+    function sortBy($field)  {
+        if($this->sortField === $field){
+            $this->sortDirection = $this->sortDirection=='desc'?'asc':'desc';
+        }else{
+            $this->sortField = $field;
+            $this->sortDirection = 'asc';
+        }
+    }
     
     function openFormModal() {
         $this->dispatch('open-modal');

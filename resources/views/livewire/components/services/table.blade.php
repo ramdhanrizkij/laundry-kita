@@ -1,6 +1,6 @@
 <div>
-    @if(session()->has('success'))
-         <div class="mt-2 bg-teal-100 border border-teal-200 text-sm text-teal-800 rounded-lg p-4 dark:bg-teal-800/10 dark:border-teal-900 dark:text-teal-500 mb-5"
+    @if (session()->has('success'))
+        <div class="mt-2 bg-teal-100 border border-teal-200 text-sm text-teal-800 rounded-lg p-4 dark:bg-teal-800/10 dark:border-teal-900 dark:text-teal-500 mb-5"
             role="alert" tabindex="-1" aria-labelledby="hs-soft-color-success-label">
             <span id="hs-soft-color-success-label" class="font-bold">Success</span>
             {{ session('success') }}
@@ -9,7 +9,7 @@
 
     <div class="flex flex-col">
         <div class="-m.1.5 overflow-x-auto">
-             <div class="p-1.5 min-w-full inline-block align-middle">
+            <div class="p-1.5 min-w-full inline-block align-middle">
                 <div
                     class="bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden dark:bg-neutral-800 dark:border-neutral-700">
                     <!-- Header -->
@@ -74,29 +74,53 @@
                                     </div>
                                 </th>
                                 <th scope="col" class="ps-6 pe-6 py-3 text-start">
-                                    <div class="flex items-center gap-x-2">
+                                    <div class="flex items-center gap-x-2 cursor-pointer" wire:click="sortBy('name')">
                                         <span
                                             class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
                                             Nama
                                         </span>
+                                        @if ($sortField == 'name')
+                                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="{{ $sortDirection === 'asc' ? 'm5 15 7-7 7 7' : 'm19 9-7 7-7-7' }}">
+                                                </path>
+                                            </svg>
+                                        @endif
                                     </div>
                                 </th>
 
                                 <th scope="col" class="px-6 py-3 text-start">
-                                    <div class="flex items-center gap-x-2">
+                                    <div class="flex items-center gap-x-2 cursor-pointer" wire:click="sortBy('price')">
                                         <span
                                             class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
                                             Harga
                                         </span>
+                                         @if ($sortField == 'price')
+                                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="{{ $sortDirection === 'asc' ? 'm5 15 7-7 7 7' : 'm19 9-7 7-7-7' }}">
+                                                </path>
+                                            </svg>
+                                        @endif
                                     </div>
                                 </th>
 
                                 <th scope="col" class="px-6 py-3 text-start">
-                                    <div class="flex items-center gap-x-2">
+                                    <div class="flex items-center gap-x-2 cursor-pointer" wire:click="sortBy('description')">
                                         <span
                                             class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
                                             Deskripsi
                                         </span>
+                                         @if ($sortField == 'description')
+                                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="{{ $sortDirection === 'asc' ? 'm5 15 7-7 7 7' : 'm19 9-7 7-7-7' }}">
+                                                </path>
+                                            </svg>
+                                        @endif
                                     </div>
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-end"></th>
@@ -120,8 +144,8 @@
                                     </td>
                                     <td class="h-px w-48 whitespace-nowrap">
                                         <div class="px-6 py-3">
-                                            <span
-                                                class="block text-sm text-gray-500 dark:text-neutral-500">Rp. {{ number_format($item->price,0,',','.') }}</span>
+                                            <span class="block text-sm text-gray-500 dark:text-neutral-500">Rp.
+                                                {{ number_format($item->price, 0, ',', '.') }}</span>
                                         </div>
                                     </td>
                                     <td class="size-px whitespace-nowrap">
@@ -136,7 +160,7 @@
                                                 class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500 cursor-pointer">Edit
                                             </button>
 
-                                             <button type="button" wire:click="delete({{ $item->id }})"
+                                            <button type="button" wire:click="delete({{ $item->id }})"
                                                 class="inline-flex items-center gap-x-1 text-sm text-red-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-red-500 cursor-pointer">Hapus
                                             </button>
                                         </div>
