@@ -150,11 +150,17 @@
                                         </div>
                                     </td>
                                     <td class="size-px whitespace-nowrap">
-                                        <div class="px-6 py-1.5">
+                                        <div class="flex gap-4">
                                             <button type="button"
-                                                class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500"
+                                                class="inline-flex items-center cursor-pointer gap-x-1 text-sm text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500"
                                                 wire:click="edit({{ $item->id }})">
                                                 Edit
+                                            </button>
+
+                                            <button type="button"
+                                                class="inline-flex cursor-pointer  items-center gap-x-1 text-sm text-red-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500"
+                                                wire:click="delete({{ $item->id }})">
+                                                Hapus
                                             </button>
                                         </div>
                                     </td>
@@ -209,4 +215,6 @@
     <!-- End Card -->
 
     @livewire('components.customers.modalform')
+    @livewire('components.customers.modal-delete')
+    
 </div>
