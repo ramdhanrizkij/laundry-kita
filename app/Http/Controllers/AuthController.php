@@ -32,6 +32,11 @@ class AuthController extends Controller
             ]);
         }
         
-        return "Success login: ".$request->email;
+        return redirect()->route('dashboard');
+    }
+
+    function logout()  {
+        Auth::logout();
+        return redirect()->route('login')->with('success','Logout successfully');
     }
 }
