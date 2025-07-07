@@ -13,10 +13,15 @@ class Table extends Component
     use WithPagination, WithoutUrlPagination;
 
     public $search;
+    public $modalDeleteData = true;
 
     public function openModal()
     {
         $this->dispatch('open-modal');
+    }
+
+    public function delete($id){
+        $this->dispatch('open-delete-modal',['id'=>$id]);
     }
 
     #[On('success')]
