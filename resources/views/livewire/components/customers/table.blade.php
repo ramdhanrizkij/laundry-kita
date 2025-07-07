@@ -75,38 +75,78 @@
                                     </div>
                                 </th>
                                 <th scope="col" class="ps-6 pe-6 py-3 text-start">
-                                    <div class="flex items-center gap-x-2">
-                                        <span
-                                            class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
-                                            Nama
-                                        </span>
-                                    </div>
+                                    <button wire:click="sortBy('name')">
+                                        <div class="flex items-center gap-x-2">
+                                            <span
+                                                class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
+                                                Nama
+                                            </span>
+                                            @if ($sortField == 'name')
+                                                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="{{ $sortDirection === 'asc' ? 'm5 15 7-7 7 7' : 'm19 9-7 7-7-7' }}">
+                                                    </path>
+                                                </svg>
+                                            @endif
+                                        </div>
+                                    </button>
                                 </th>
 
                                 <th scope="col" class="px-6 py-3 text-start">
-                                    <div class="flex items-center gap-x-2">
-                                        <span
-                                            class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
-                                            Email
-                                        </span>
-                                    </div>
+                                    <button wire:click="sortBy('email')">
+                                        <div class="flex items-center gap-x-2">
+                                            <span
+                                                class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
+                                                Email
+                                            </span>
+                                             @if ($sortField == 'email')
+                                                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="{{ $sortDirection === 'asc' ? 'm5 15 7-7 7 7' : 'm19 9-7 7-7-7' }}">
+                                                    </path>
+                                                </svg>
+                                            @endif
+                                        </div>
+                                    </button>
                                 </th>
 
                                 <th scope="col" class="px-6 py-3 text-start">
-                                    <div class="flex items-center gap-x-2">
+                                    <div class="flex items-center gap-x-2" wire:click="sortBy('phone_number')">
                                         <span
                                             class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
                                             No Telp
                                         </span>
+                                         @if ($sortField == 'phone_number')
+                                                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="{{ $sortDirection === 'asc' ? 'm5 15 7-7 7 7' : 'm19 9-7 7-7-7' }}">
+                                                    </path>
+                                                </svg>
+                                            @endif
                                     </div>
                                 </th>
 
                                 <th scope="col" class="px-6 py-3 text-start">
-                                    <div class="flex items-center gap-x-2">
+                                    <div class="flex items-center gap-x-2" wire:click="sortBy('address')">
                                         <span
                                             class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
                                             Alamat
                                         </span>
+                                         @if ($sortField == 'address')
+                                                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="{{ $sortDirection === 'asc' ? 'm5 15 7-7 7 7' : 'm19 9-7 7-7-7' }}">
+                                                    </path>
+                                                </svg>
+                                            @endif
                                     </div>
                                 </th>
 
@@ -216,5 +256,5 @@
 
     @livewire('components.customers.modalform')
     @livewire('components.customers.modal-delete')
-    
+
 </div>
